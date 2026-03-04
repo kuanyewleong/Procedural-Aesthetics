@@ -485,16 +485,15 @@
   <section id="philosophy">    
     <details>
         <summary>
-            <h2>Generating Procedural Aesthetics - </h2>
-            <h2>Emerging Styles without Art Datasets</h2>
+            <h2>Generating Procedural Aesthetics - Emerging Styles without Art Datasets</h2>            
             <p>This gallery presents flower images that look painted, printed, stitched, or carved - yet the system that generated them was never trained on paintings, illustrations, or any art dataset. </p>
-            <p>Research Questions:
-            How much can a text‑to‑image model learn by procedural filters to generate a recognizable visual art style without ever being trained on artwork samples?
-            Can the ensemble of several models trained with procedural filters of different art style create some emerging, yet visually coherent art styles? &#x2935;</p>
+            <p>Research Questions:</p>
+            <p>How much can a text‑to‑image model learn by procedural filters to generate a recognizable visual art style without ever being trained on artwork samples?</p>
+            <p>Can the ensemble of several models trained with procedural filters of different art style create some emerging, yet visually coherent art styles? &#x2935;</p>
         </summary>
-        <p>To explore this, I trained a diffusion-based text-to-image model entirely from scratch using only real flower photographs (Oxford Flower-102). No pre-trained checkpoints. No inherited aesthetic priors. Any “artistic” qualities here are not copied from art history; they are grown through constraint.</p><br>
+        <p>To explore this, I trained a diffusion-based text-to-image model entirely from scratch using only real flower photographs (Oxford Flower-102). No pre-trained checkpoints. No inherited aesthetic priors. Any “artistic” qualities here are not copied from art history; they are grown through constraint.</p>
 
-        <p>The method is called procedural style anchoring. After learning to generate flowers from text, the model is fine-tuned on the same photographs after they are transformed by deterministic procedural filters—posterization, halftone logic, pointillist sampling, mosaic tiling, cross-hatching fields, low-poly abstraction, anisotropic Kuwahara smoothing, and more. These procedures act like a kind of visual physics: they impose consistent rules about edges, texture, and color, and the model internalizes those rules as a stable aesthetic.</p><br>
+        <p>The method is called procedural style anchoring. After learning to generate flowers from text, the model is fine-tuned on the same photographs after they are transformed by deterministic procedural filters—posterization, halftone logic, pointillist sampling, mosaic tiling, cross-hatching fields, low-poly abstraction, anisotropic Kuwahara smoothing, and more. These procedures act like a kind of visual physics: they impose consistent rules about edges, texture, and color, and the model internalizes those rules as a stable aesthetic.</p>
 
         <p>The highlight of this work—and the engine of its creative surprise—is ensembling. Instead of relying on one style model at a time, I combine multiple procedurally anchored models during generation using weighted soft blending, sometimes block-wise across the network. Different “style instincts” can influence different parts of the diffusion process, allowing hybrid aesthetics to emerge: halftone structure with fauvist color, mosaic geometry with painterly softness, felt-like texture fused with poster-flat tonal fields. The result is not a simple average, but a negotiation—an interference pattern where new visual dialects appear between established styles.</p>
     </details>       
