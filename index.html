@@ -100,7 +100,7 @@
         }
     
         .header-image img {
-            max-width: 220px;
+            max-width: 240px;
             height: auto;
             border-radius: 10px;
             display: block;
@@ -483,8 +483,8 @@
           <img src="https://raw.githubusercontent.com/kuanyewleong/Procedural-Aesthetics/refs/heads/main/website_media/blanket-flower.png" alt="Gallery Header Image">
         </div>
         <div class="header-text">
-          <h1>Procedural Aesthetics:</h1>
-          <h3>Emerging Styles by Ensembling Procedurally-Anchored Models</h3>
+          <h1>  Procedural Aesthetics:</h1>
+          <h3>  Emerging Styles by Ensembling Procedurally-Anchored Models</h3>
           <!-- <p>(accepted for exhibition on site at <a href="https://cvpr.thecvf.com/" target="_blank">CVPR 2026</a> & in the online <a href="https://thecvf-art.com/project/kuan-yew-leong/" target="_blank">gallery</a>)</p>        -->
         </div>
     </header>
@@ -495,12 +495,12 @@
             <h2>Generating Procedural Aesthetics - Emerging Styles without Art Datasets</h2>            
             <p>This gallery presents flower images that look painted, printed, stitched, or carved - yet the system that generated them was never trained on paintings, illustrations, or any art dataset. </p>
             <p>Research Questions:</p>
-            <p>How much can a text‑to‑image model learn by procedural filters to generate a recognizable visual art style without ever being trained on artwork samples?</p>
-            <p>Can the ensemble of several models trained with procedural filters of different art style create some emerging, yet visually coherent art styles? &#x2935;</p>
+            <p>(1) How much can a text‑to‑image model learn by procedural filters to generate a recognizable visual art style without ever being trained on artwork samples?</p>
+            <p>(2) Can the ensemble of several models trained with procedural filters of different art style create some emerging, yet visually coherent art styles? &#x2935;</p>
         </summary>
-        <p>To explore this, I trained a diffusion-based text-to-image model entirely from scratch using only real flower photographs (Oxford Flower-102). No pre-trained checkpoints. No inherited aesthetic priors. Any “artistic” qualities here are not copied from art history; they are grown through constraint.</p>
+        <p>To explore this, I trained a diffusion-based text-to-image model entirely from scratch using only real flower photographs (Oxford Flower-102). <strong>No pre-trained checkpoints. No inherited aesthetic priors.</strong> Any “artistic” qualities here are not copied from art history; they are grown through constraint.</p>
 
-        <p>The method is called procedural style anchoring. After learning to generate flowers from text, the model is fine-tuned on the same photographs after they are transformed by deterministic procedural filters—posterization, halftone logic, pointillist sampling, mosaic tiling, cross-hatching fields, low-poly abstraction, anisotropic Kuwahara smoothing, and more. These procedures act like a kind of visual physics: they impose consistent rules about edges, texture, and color, and the model internalizes those rules as a stable aesthetic.</p>
+        <p>The method is called <strong>procedural style anchoring</strong>. After learning to generate flowers from text, the model is fine-tuned on the same photographs after they are transformed by deterministic procedural filters—posterization, halftone logic, pointillist sampling, mosaic tiling, cross-hatching fields, low-poly abstraction, anisotropic Kuwahara smoothing, and more. These procedures act like a kind of visual physics: they impose consistent rules about edges, texture, and color, and the model internalizes those rules as a stable aesthetic.</p>
 
         <p>The highlight of this work—and the engine of its creative surprise—is ensembling. Instead of relying on one style model at a time, I combine multiple procedurally anchored models during generation using weighted soft blending, sometimes block-wise across the network. Different “style instincts” can influence different parts of the diffusion process, allowing hybrid aesthetics to emerge: halftone structure with fauvist color, mosaic geometry with painterly softness, felt-like texture fused with poster-flat tonal fields. The result is not a simple average, but a negotiation—an interference pattern where new visual dialects appear between established styles.</p>
     </details>       
