@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2ZDZJ509XR"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-2ZDZJ509XR');
+    </script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Procedural Aesthetics | Emerging Styles by Ensembling Procedurally-Anchored Models</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Open+Sans&display=swap" rel="stylesheet">
+    <!-- 🌐 Open Graph Metadata for Social Sharing -->
+    <meta property="og:title" content="Procedural Aesthetics | Emerging Styles by Ensembling Procedurally-Anchored Models">
+    <meta property="og:description" content="Can a model grow a recognizable “art style” without learning from human artworks—purely from rules, constraints, and the dynamics of generation?">    
+    <meta property="og:url" content="https://kuanyewleong.github.io/glitch-as-intention/">
+    <meta property="og:type" content="website">
+
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            color: #1F2933;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 1000px;
+            margin: auto;
+            position: relative;
+            z-index: 1;
+            background-color: #F3F4F6; /* fallback if image fails */
+            overflow-x: hidden;
+        }
+
+        /* Background image layer */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background: url('https://raw.githubusercontent.com/kuanyewleong/glitch-as-intention/refs/heads/main/media_source/background.png') no-repeat center center / cover;
+            opacity: 0.50; /* adjust to your liking */
+            z-index: -1; /* keep it behind all content */
+            pointer-events: none; /* allow interactions with content */
+        }
+    
+        h1 {
+            font-size: 2rem;
+        }
+    
+        h3 {
+            font-size: calc(2rem * 0.85);
+        }
+
+        hr {
+        margin-top: 10px;
+        margin-bottom: 30px;
+        }
+
+        a {
+            color: #14532D;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            font-style: italic;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #10B981;
+            text-decoration: none;
+        }
+
+        a:visited {
+            color: #4B5563;
+        }
+    
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #374151; /* dark grey */
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+    
+        .header-image img {
+            max-width: 240px;
+            height: auto;
+            border-radius: 10px;
+            display: block;
+        }
+    
+        .header-text {
+            flex: 1;
+            order: 2;
+        }
+    
+        header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: #0B3D2E; /* dark green */
+            margin-bottom: 0.3rem;
+            text-align: left;
+        }
+    
+        header p {
+            font-size: 1.1rem;
+            color: #4B5563; /* medium-dark grey */
+            text-align: left;
+            margin-bottom: 0;
+        }
+    
+        section {
+            padding: 3rem 2rem;
+            max-width: 100%;
+            width: 90%;
+            margin: auto;
+            background-color: #FFFFFF; /* white */
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+    
+        section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #0B3D2E; /* dark green */
+            border-left: 6px solid #14532D; /* darker green */
+            padding-left: 10px;
+        }
+
+        .highlight-quote {
+            font-style: italic;
+            border-left: 4px solid #999;
+            padding-left: 20px;
+            color: #2a2a2a;
+            background-color: #f9f9f9;
+            font-size: 1.05em;
+            line-height: 1.6;
+            margin: 24px 0;
+            }
+
+    
+        .gallery {
+            column-count: 2;
+            column-gap: 2rem;
+            width: 100%;
+        }
+    
+        .artwork {
+            background-color: #FFFFFF;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s ease;
+            break-inside: avoid;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            width: 100%;
+            position: relative; /* Added for positioning the tooltip */
+        }
+
+        .artwork:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(21, 94, 57, 0.3); /* dark green glow */
+        }
+
+        .artwork img {
+            width: 100%;
+            height: auto;
+            display: block;
+            cursor: pointer;
+        }
+
+        /* New tooltip element */
+        .artwork::after {
+            content: "Click to enlarge";
+            position: absolute;
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(31, 41, 55, 0.85); /* deep grey */
+            color: #F3F4F6; /* light text */
+            padding: 4px 10px;
+            font-size: 0.85rem;
+            border-radius: 6px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            white-space: nowrap;
+            z-index: 10; /* Ensure it appears above the image */
+        }
+
+        .artwork:hover::after {
+            opacity: 1;
+        }
+       
+        .caption {
+        margin-top: 5px;
+        padding: 1rem;
+        font-size: 1rem;
+        color: #1F2933;
+        text-align: left;
+        background-color: #D1D5DB; /* light grey */
+        }
+
+        .caption-title {
+        font-weight: bold;
+        text-align: left;
+        font-size: 1.2em; /* Adjust as needed */
+        }
+    
+        .profile {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            background-color: #D1CBC1;
+            padding: 1.5rem;
+            border-radius: 12px;
+        }
+    
+        .profile img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+    
+        .profile-info {
+            flex: 1;
+            color: #1F2933;
+        }
+    
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #4B5563;
+            font-size: 0.9rem;
+        }
+    
+        @media (max-width: 768px) {
+            .gallery {
+                column-count: 1;
+            }
+    
+            .header {
+                flex-direction: column;
+                text-align: center;
+            }
+    
+            .header-text {
+                max-width: 100%;
+                margin-top: 20px;
+            }
+    
+            .header-image {
+                margin-left: 0;
+            }
+        }
+    
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(17, 24, 39, 0.9); /* very dark grey */
+            justify-content: center;
+            align-items: center;
+        }
+    
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            border-radius: 12px;
+            border: 4px solid #14532D; /* rich green */
+        }
+    
+        .close-button {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #F3F4F6;
+            background: none;
+            border: none;
+            cursor: pointer;
+            z-index: 1000;
+        }
+    
+        .close-button:hover {
+            color: #10B981; /* teal green */
+        }
+        
+        .modal-container {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 20px;
+            width: 90%;
+            max-width: 1200px;
+        }
+
+        .modal-content {
+            max-width: 60%;
+            max-height: 90vh;
+            border-radius: 8px;
+        }
+
+        .modal-caption {
+            max-width: 35%;
+            color: #F3F4F6;
+            overflow-y: auto;
+            max-height: 90vh;
+        }
+
+        .modal-caption-title {
+            font-weight: bold;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .modal-caption p {
+            font-size: 1em;
+            line-height: 1.5;
+        }
+
+        .nav-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            font-size: 2rem;
+            padding: 10px;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        .prev-button {
+            left: 20px;
+        }
+
+        .next-button {
+            right: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .modal-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .modal-content,
+            .modal-caption {
+                max-width: 90%;
+            }
+
+            .modal-caption {
+                margin-top: 15px;
+                max-height: 40vh;
+            }
+        }
+
+        details {
+            margin-bottom: 1.5rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 1rem;
+            background-color: #fafafa;
+            transition: box-shadow 0.2s ease-in-out;
+        }
+
+        details[open] {
+            animation: fadeIn 0.3s ease-in;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        details summary {
+            cursor: pointer;            
+            color: #0B3D2E;
+            position: relative;
+            padding-right: 1.5rem;
+            }
+
+        details summary::after {
+            content: "➕";
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2rem;
+            color: #14532D; /* dark green for consistency */
+            transition: transform 0.2s ease;
+        }
+
+        details[open] summary::after {
+            content: "➖";
+        }
+
+        .floating-nav {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            transition: opacity 0.3s ease;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 999;
+        }
+
+        .floating-nav button {
+            background-color: rgba(20, 83, 45, 0.85); /* rich semi-transparent green */
+            color: #F3F4F6;
+            border: none;
+            border-radius: 20px;
+            padding: 10px 16px;
+            font-family: 'Playfair Display', serif;
+            font-size: 0.95rem;
+            font-style: italic;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            white-space: nowrap;
+        }
+
+        .floating-nav button:hover {
+            background-color: #10B981; /* soft teal glow */
+            transform: translateY(-2px);
+        }
+
+        body.modal-open .floating-nav {
+            display: none !important;
+        }
+    </style>            
+</head>
+<body>
+    <div id="imgModal" class="modal">
+        <button id="modalClose" class="close-button">&times;</button>
+        <button class="nav-button prev-button" id="modalPrev">&#10094;</button>
+        <button class="nav-button next-button" id="modalNext">&#10095;</button>
+        <div class="modal-container">
+            <img class="modal-content" id="modalImage" src="" alt="Enlarged Artwork">
+            <div class="modal-caption">
+                <span class="modal-caption-title" id="modalCaptionTitle"></span>
+                <p id="modalCaptionText"></p>
+            </div>
+        </div>
+    </div>
+    <header class="header">
+        <div class="header-image">
+          <img src="https://github.com/kuanyewleong/glitch-as-intention/blob/main/media_source/japanese_cup_kintsugi_edited.png?raw=true" alt="Gallery Header Image">
+        </div>
+        <div class="header-text">
+          <h1>Procedural Aesthetics:</h1>
+          <h3>Emerging Styles by Ensembling Procedurally-Anchored Models</h3>
+          <!-- <p>(accepted for exhibition on site at <a href="https://cvpr.thecvf.com/" target="_blank">CVPR 2026</a> & in the online <a href="https://thecvf-art.com/project/kuan-yew-leong/" target="_blank">gallery</a>)</p>        -->
+        </div>
+    </header>
+
+  <section id="philosophy">    
+    <details>
+        <summary>
+            <h2>Generating Procedural Aesthetics</h2>
+            <p>"This gallery presents flower images that look painted, printed, stitched, or carved - yet the system that generated them was never trained on paintings, illustrations, or any art dataset. </p>
+            <p>Research Questions:
+            How much can a text‑to‑image model learn by procedural filters to generate a recognizable visual art style without ever being trained on artwork samples?
+            Can the ensemble of several models trained with procedural filters of different art style create some emerging, yet visually coherent art styles? &#x2935;</p>
+        </summary>
+        <p>To explore this, I trained a diffusion-based text-to-image model entirely from scratch using only real flower photographs (Oxford Flower-102). No pre-trained checkpoints. No inherited aesthetic priors. Any “artistic” qualities here are not copied from art history; they are grown through constraint.
+
+        The method is called procedural style anchoring. After learning to generate flowers from text, the model is fine-tuned on the same photographs after they are transformed by deterministic procedural filters—posterization, halftone logic, pointillist sampling, mosaic tiling, cross-hatching fields, low-poly abstraction, anisotropic Kuwahara smoothing, and more. These procedures act like a kind of visual physics: they impose consistent rules about edges, texture, and color, and the model internalizes those rules as a stable aesthetic.
+
+        The highlight of this work—and the engine of its creative surprise—is ensembling. Instead of relying on one style model at a time, I combine multiple procedurally anchored models during generation using weighted soft blending, sometimes block-wise across the network. Different “style instincts” can influence different parts of the diffusion process, allowing hybrid aesthetics to emerge: halftone structure with fauvist color, mosaic geometry with painterly softness, felt-like texture fused with poster-flat tonal fields. The result is not a simple average, but a negotiation—an interference pattern where new visual dialects appear between established styles.</p>
+    </details>       
+    <p class="highlight-quote">"Can a model grow a recognizable “art style” without learning from human artworks—purely from rules, constraints, and the dynamics of generation? Browse slowly. Some images demonstrate single anchored styles; others embrace the ensemble hybrids where the most unexpected forms bloom. Let the textures, edges, and color decisions hold your attention—marks that were never painted, only discovered."</p> 
+  </section>
+
+  <section id="gallery">    
+    <h2 id="gallery">Gallery</h2>    
+    <div class="gallery">
+        <table>
+            <thead>
+                <tr>
+                    <th>Felt Style</th>
+                    <th>Lowpoly Style</th>
+                    <th>Oil Painting Style</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="image-container">
+                        <img src="https://github.com/kuanyewleong/procedural-style-anchoring/blob/main/figures/stage2_felt_camellia.png" alt="Camellia - felt style">
+                    </td>
+                    <td class="image-container">
+                        <img src="https://github.com/kuanyewleong/procedural-style-anchoring/blob/main/figures/stage2_lowpoly_clematis.png" alt="Clematis - lowpoly style">
+                    </td>
+                    <td class="image-container">
+                        <img src="https://github.com/kuanyewleong/procedural-style-anchoring/raw/main/figures/image_oil_painting.jpg" alt="King Protea - oil painting">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="caption">Camellia</td>
+                    <td class="caption">Clematis</td>
+                    <td class="caption">King Protea</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Mosaic</th>
+                    <th>Post-impressionism</th>
+                    <th>Poster</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="image-container">
+                        <img src="https://github.com/kuanyewleong/procedural-style-anchoring/blob/main/figures/stage2_mosaic_buttercup.png" alt="Buttercup - mosaic">
+                    </td>
+                    <td class="image-container">
+                        <img src="https://github.com/kuanyewleong/procedural-style-anchoring/blob/main/figures/stage2_post-imp_rose.png" alt="Rose - post-impressionism">
+                    </td>
+                    <td class="image-container">
+                        <img src="https://github.com/kuanyewleong/procedural-style-anchoring/blob/main/figures/stage2_poster_morning_glory.png" alt="Morning Glory - poster">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="caption">Buttercup</td>
+                    <td class="caption">Rose</td>
+                    <td class="caption">Morning Glory</td>
+                </tr>
+            </tbody>
+        </table>      
+    </div>    
+  </section>
+
+  <section id="philosophy">
+    <details>
+        <summary>
+            <h2>Proposed Technical Implementation</h2>
+            <p>Here, the technical implementation involving data collection, model selection and training is described... &#x2935;</p>
+        </summary>
+        <p><strong>Data Collection and Preprocessing</strong></p>
+        <p>Dataset is constructed from:</p>
+        <ul>
+            <li>Corrupt Image and Video Data: Scraped from archives of compressed, degraded, or intentionally distorted media.</li>        
+            <li>Glitches: Generated by applying algorithmic distortions such as pixel sorting, color channel shifts, and noise-based corruption techniques.</li>
+        </ul>
+        <p>Each data sample undergoes preprocessing steps, including normalization, resizing, and structured augmentation to introduce controlled levels of randomness while preserving underlying glitch features. Data augmentation methods such as random cropping, spectral decomposition, and edge degradation are applied to simulate natural error propagation in digital media.</p><br>
+        
+        <p><strong>Model Selection and Training Pipeline</strong></p>
+        <p>A Diffusion Model is employed to synthesize glitch-inspired visuals. The model architecture follows a multi-stage process:</p>
+        <ul>
+            <li>Feature Extraction: A pre-trained model extracts low- and high-frequency features from the dataset to inform glitch-based textures.</li> 
+        </ul>
+        <p>Generator and Discriminator Design:</p>
+        <ul>
+            <li>The generator is conditioned on noise vectors and input embeddings derived from the extracted features, allowing it to reconstruct and amplify glitch patterns.</li>        
+            <li>The discriminator employs a combination of perceptual loss and adversarial training to differentiate between human-created and AI-generated glitch artifacts.</li>
+        </ul>
+        <p>Training Strategy:</p>
+        <ul>
+            <li>The model is trained over multiple epochs with progressively increasing corruption parameters to reinforce glitch characteristics.</li>        
+            <li>Fine-tuning is carried out with transfer learning techniques using a secondary dataset consisting of abstract art and photography.</li>
+        </ul>
+    </details>
+  </section>
+  
+  <section id="about-artist">
+    <h2>About the Artist</h2>
+    <div class="profile">
+      <img src="https://raw.githubusercontent.com/kuanyewleong/glitch-as-intention/refs/heads/main/media_source/author_pic.jpg" alt="Leong Kuan Yew">
+      <div class="profile-info">
+        <p><strong>Kuan Yew, LEONG</strong> is a specialist of Computer Vision and Deep Learning based in Kyoto, Japan. Currently, he works on the improvements of computer vision by researching different learning algorithms. Kuan Yew demonstrates a keen interest in the intersection of art, natural science, and technology through the design and development of sophisticated smart paludariums.</p>
+        <p>He maintains a forward-thinking perspective, recognizing that present-day challenges represent opportunities for innovation, and is committed to leveraging technological advancements for future betterment.</p>
+        <p>See more works on his Github: <a href="https://github.com/kuanyewleong" target="_blank">https://github.com/kuanyewleong</a></p>
+      </div>
+    </div>
+  </section>
+
+  <footer>    
+    &copy; 2025 Leong Kuan Yew. See license: <a href="https://github.com/kuanyewleong/glitch-as-intention?tab=License-1-ov-file#readme" target="_blank">CC BY-NC-SA 4.0</a>
+  </footer>
+
+    <script>
+        const artworks = document.querySelectorAll('.artwork');
+        const modal = document.getElementById('imgModal');
+        const modalImg = document.getElementById('modalImage');
+        const modalCaptionTitle = document.getElementById('modalCaptionTitle');
+        const modalCaptionText = document.getElementById('modalCaptionText');
+        let currentIndex = 0;
+    
+        function showModal(index) {
+        const img = artworks[index].querySelector('img');
+        const captionContainer = artworks[index].querySelector('.caption');
+        const captionTitle = captionContainer.querySelector('.caption-title').innerText;
+        const captionText = captionContainer.innerHTML
+            .replace(captionContainer.querySelector('.caption-title').outerHTML, '').trim();
+    
+        modalImg.src = img.src;
+        modalCaptionTitle.innerText = captionTitle;
+        modalCaptionText.innerHTML = captionText;
+    
+        modal.style.display = 'flex';
+        document.body.classList.add('modal-open'); // ✅ hide nav buttons
+        currentIndex = index;
+        }
+    
+        function closeModal() {
+        modal.style.display = 'none';
+        document.body.classList.remove('modal-open'); // ✅ show nav buttons again
+        }
+    
+        document.querySelectorAll('.artwork img').forEach((img, index) => {
+        img.addEventListener('click', () => showModal(index));
+        });
+    
+        document.getElementById('modalClose').addEventListener('click', closeModal);
+    
+        document.getElementById('modalPrev').addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + artworks.length) % artworks.length;
+        showModal(currentIndex); // nav still hidden
+        });
+    
+        document.getElementById('modalNext').addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % artworks.length;
+        showModal(currentIndex); // nav still hidden
+        });
+    </script>
+
+    <script>
+        const detailBlocks = document.querySelectorAll("section#philosophy details");
+
+        detailBlocks.forEach((detail) => {
+        detail.addEventListener("toggle", () => {
+            if (detail.open) {
+            detailBlocks.forEach((otherDetail) => {
+                if (otherDetail !== detail && otherDetail.open) {
+                otherDetail.open = false;
+                }
+            });
+            }
+        });
+        });
+    </script>
+    
+    <div class="floating-nav">
+        <button onclick="scrollToSection('top')" title="Back to Top">Back to Top</button>
+        <button onclick="scrollToSection('gallery')" title="Go to Gallery">Go to Gallery</button>
+        <button onclick="scrollToSection('about-artist')" title="Go to Author">Meet the Artist</button>
+    </div>
+
+    <script>
+        function scrollToSection(id) {
+          if (id === 'top') {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          } else {
+            const target = document.getElementById(id);
+            if (target) {
+              target.scrollIntoView({ behavior: 'smooth' });
+            }
+          }
+        }
+    </script>
+</body>
+</html>
