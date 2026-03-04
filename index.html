@@ -63,11 +63,13 @@
         }
 
         table {
-            display: block !important;
+            display: table !important;
             width: 100% !important;
-            margin-bottom: 30px;
-            float: none !important;
             clear: both !important;
+            margin-bottom: 30px;
+            float: none !important;        /* override any float */
+            display: block !important;      /* alternative: force block display */
+            page-break-inside: avoid;       /* keep tables intact if printing */
         }
 
         .table-container, 
