@@ -62,22 +62,22 @@
         margin-bottom: 30px;
         }
 
-        table {
-            display: table !important;
-            width: 100% !important;
-            clear: both !important;
-            margin-bottom: 30px;
-            float: none !important;        /* override any float */
-            display: block !important;      /* alternative: force block display */
-            page-break-inside: avoid;       /* keep tables intact if printing */
+        .gallery-grid{
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
         }
 
-        .table-container, 
-            body,
-            div:has(> table) {
-                display: block !important;
-                width: 100%;
-            }
+        .gallery-grid img{
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .gallery-grid figcaption{
+            text-align: center;
+            margin-top: 8px;
+        }
 
         a {
             color: #14532D;
@@ -532,76 +532,22 @@
 
     <strong>Fauvism Art Style</strong>
     <div class="gallery">
-        <div style="width:50%; margin-bottom:30px;"></div>        
-            <table>                
-                <tbody>
-                    <tr>
-                        <td class="image-container">
-                            <img src="https://raw.githubusercontent.com/kuanyewleong/Procedural-Aesthetics/refs/heads/main/figures/fauvism/stage2_fauvism_bolero-deep-blue.png" alt="bolero deep blue">
-                        </td>
-                        <td class="image-container">
-                            <img src="https://raw.githubusercontent.com/kuanyewleong/Procedural-Aesthetics/refs/heads/main/figures/fauvism/stage2_fauvism_clematis2.png" alt="Clematis">
-                        </td>
-                        <td class="image-container">
-                            <img src="https://raw.githubusercontent.com/kuanyewleong/Procedural-Aesthetics/refs/heads/main/figures/fauvism/stage2_fauvism_lotus.png" alt="lotus">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="caption">Bolero Deep Blue</td>
-                        <td class="caption">Clematis</td>
-                        <td class="caption">Lotus</td>
-                    </tr>
-                </tbody>
-            </table>        
-        </div>
+        <div class="gallery-grid">
+            <figure>
+                <img src="https://raw.githubusercontent.com/kuanyewleong/Procedural-Aesthetics/refs/heads/main/figures/fauvism/stage2_fauvism_bolero-deep-blue.png" alt="bolero deep blue">
+                <figcaption>Bolero Deep Blue</figcaption>
+            </figure>
+            <figure>
+                <img src="https://raw.githubusercontent.com/kuanyewleong/Procedural-Aesthetics/refs/heads/main/figures/fauvism/stage2_fauvism_clematis2.png" alt="Clematis">
+                <figcaption>Clematis</figcaption>
+            </figure>
+            <figure>
+                <img src="https://raw.githubusercontent.com/kuanyewleong/Procedural-Aesthetics/refs/heads/main/figures/fauvism/stage2_fauvism_lotus.png" alt="lotus">
+                <figcaption>Lotus</figcaption>
+            </figure>
+        </div>        
 
-    <strong>Felt-like Art Style</strong>
-    <div class="gallery">
-        <div style="width:100%; margin-bottom:30px;"></div>        
-            <table>                
-                <tbody>
-                    <tr>
-                        <td class="image-container">
-                            <img src="https://github.com/kuanyewleong/procedural-style-anchoring/blob/main/figures/stage2_felt_camellia.png" alt="Camellia - felt style">
-                        </td>
-                        <td class="image-container">
-                            <img src="https://github.com/kuanyewleong/procedural-style-anchoring/blob/main/figures/stage2_lowpoly_clematis.png" alt="Clematis - lowpoly style">
-                        </td>
-                        <td class="image-container">
-                            <img src="https://github.com/kuanyewleong/procedural-style-anchoring/raw/main/figures/image_oil_painting.jpg" alt="King Protea - oil painting">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="caption">Camellia</td>
-                        <td class="caption">Clematis</td>
-                        <td class="caption">King Protea</td>
-                    </tr>
-                </tbody>
-            </table>        
-        </div>
-
-        <div style="width:100%; margin-bottom:30px;">
-            <table>                
-                <tbody>
-                    <tr>
-                        <td class="image-container">
-                            <img src="https://github.com/kuanyewleong/procedural-style-anchoring/blob/main/figures/stage2_mosaic_buttercup.png" alt="Buttercup - mosaic">
-                        </td>
-                        <td class="image-container">
-                            <img src="https://github.com/kuanyewleong/procedural-style-anchoring/blob/main/figures/stage2_post-imp_rose.png" alt="Rose - post-impressionism">
-                        </td>
-                        <td class="image-container">
-                            <img src="https://github.com/kuanyewleong/procedural-style-anchoring/blob/main/figures/stage2_poster_morning_glory.png" alt="Morning Glory - poster">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="caption">Buttercup</td>
-                        <td class="caption">Rose</td>
-                        <td class="caption">Morning Glory</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+    
     </div>    
   </section>
 
