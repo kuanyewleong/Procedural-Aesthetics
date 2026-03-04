@@ -63,10 +63,11 @@
         }
 
         table {
-            display: table !important;   /* ensure block-level behavior */
-            width: 100%;
-            clear: both;                 /* prevent any floating elements from interfering */
-            margin-bottom: 30px;         /* optional spacing between tables */
+            display: block !important;
+            width: 100% !important;
+            margin-bottom: 30px;
+            float: none !important;
+            clear: both !important;
         }
 
         a {
@@ -507,7 +508,7 @@
 
         <p>The highlight of this work—and the engine of its creative surprise—is ensembling. Instead of relying on one style model at a time, I combine multiple procedurally anchored models during generation using weighted soft blending, sometimes block-wise across the network. Different “style instincts” can influence different parts of the diffusion process, allowing hybrid aesthetics to emerge: halftone structure with fauvist color, mosaic geometry with painterly softness, felt-like texture fused with poster-flat tonal fields. The result is not a simple average, but a negotiation—an interference pattern where new visual dialects appear between established styles.</p>
     </details>       
-    <p class="highlight-quote">"Can a model grow a recognizable “art style” without learning from human artworks—purely from rules, constraints, and the dynamics of generation? Browse slowly. Some images demonstrate single anchored styles; others embrace the ensemble hybrids where the most unexpected forms bloom. Let the textures, edges, and color decisions hold your attention—marks that were never painted, only discovered."</p> 
+    <p class="highlight-quote">"Can a model grow a recognizable “art style” without learning from human artworks—purely from rules, constraints, and the dynamics of generation? Browse slowly. Some images demonstrate single anchored styles; others embrace the ensemble hybrids where the most unexpected forms bloom. Enjoy browsing!"</p> 
   </section>
 
   <section id="gallery">    
