@@ -1,0 +1,21 @@
+.venv
+__pycache__
+*.pyc
+.vscode
+*.ckpt
+.idea
+experiments
+playground
+validation_ijbs
+*.pkl
+*.csv
+*.slurm
+*.sh
+result
+
+
+# Ignore result and test files / gallery /models etc.
+ckpts
+data
+samples
+logs
