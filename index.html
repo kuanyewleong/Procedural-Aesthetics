@@ -537,13 +537,18 @@
     <p class="highlight-quote">"Can a model grow a recognizable “art style” without learning from human artworks — purely from rules, constraints, and the dynamics of generation? Browse slowly. Some images demonstrate single anchored styles; others embrace the ensemble hybrids where the most unexpected forms bloom. Enjoy viewing!"</p> 
   </section>
 
-  <section id=""philosophy">    
+  <section id="philosophy">    
     <details>
         <summary>
             <h2>Method (Behind the Images)</h2>
             <p>How do we train a model to learn an art style without art data? How do we ensemble multiple models to create new styles?</p>
         </summary>
         <p><strong>Procedural Style Anchoring:</strong> I start with a text-to-image diffusion model trained from scratch on the Oxford Flower-102 dataset, which contains 8,189 images of 102 flower species. The model is trained in two stages: first on the original photos, then fine-tuned on procedurally transformed versions of the same photos. Each procedural filter imposes a different set of visual constraints, and the model internalizes these as distinct "style instincts."</p>
+
+        <figure>            
+            <img src="https://raw.githubusercontent.com/kuanyewleong/Procedural-Aesthetics/refs/heads/main/website_media/info-graphic-edit.png" alt="Methodology">
+            <figcaption>Methodology in Brief Infographic</figcaption>
+        </figure>
 
         
     </details>
