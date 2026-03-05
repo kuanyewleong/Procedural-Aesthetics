@@ -530,9 +530,11 @@
 
         <p>The method is called <strong>procedural style anchoring</strong>. After learning to generate flowers from text, the model is fine-tuned on the same photographs after they are transformed by deterministic procedural filters—posterization, halftone logic, pointillist sampling, mosaic tiling, cross-hatching fields, low-poly abstraction, anisotropic Kuwahara smoothing, and more. These procedures act like a kind of visual physics: they impose consistent rules about edges, texture, and color, and the model internalizes those rules as a stable aesthetic.</p>
 
-        <p>The highlight of this work—and the engine of its creative surprise—is ensembling. Instead of relying on one style model at a time, I combine multiple procedurally anchored models during generation using weighted soft blending, sometimes block-wise across the network. Different “style instincts” can influence different parts of the diffusion process, allowing hybrid aesthetics to emerge: halftone structure with fauvist color, mosaic geometry with painterly softness, felt-like texture fused with poster-flat tonal fields. The result is not a simple average, but a negotiation—an interference pattern where new visual dialects appear between established styles.</p>
+        <p><strong>The highlight of this work — and the engine of its creative surprise — is ensembling.</strong> Instead of relying on one style model at a time, I combine multiple procedurally anchored models during generation using weighted soft blending, sometimes block-wise across the network. Different “style instincts” can influence different parts of the diffusion process, allowing hybrid aesthetics to emerge: halftone structure with fauvist color, mosaic geometry with painterly softness, felt-like texture fused with poster-flat tonal fields. The result is not a simple average, but a negotiation—an interference pattern where new visual dialects appear between established styles.</p>
+
+        <p>The methodology of this work is given after the Gallery section. The approach used in making the ensemble is also described there. I tried to limit the technicallity of the description as this page focuses on the art and aesthetics.</p>
     </details>       
-    <p class="highlight-quote">"Can a model grow a recognizable “art style” without learning from human artworks—purely from rules, constraints, and the dynamics of generation? Browse slowly. Some images demonstrate single anchored styles; others embrace the ensemble hybrids where the most unexpected forms bloom. Enjoy browsing!"</p> 
+    <p class="highlight-quote">"Can a model grow a recognizable “art style” without learning from human artworks — purely from rules, constraints, and the dynamics of generation? Browse slowly. Some images demonstrate single anchored styles; others embrace the ensemble hybrids where the most unexpected forms bloom. Enjoy viewing!"</p> 
   </section>
 
   <section id="gallery">    
@@ -628,7 +630,7 @@
             target="_blank" rel="noopener noreferrer">
             <img src="https://raw.githubusercontent.com/kuanyewleong/Procedural-Aesthetics/refs/heads/main/figures/lotus/mix-plan_lotus.png" alt="Mix Plan">
             </a>
-            <figcaption>Models Ensemble - Mix Plan</figcaption>
+            <figcaption>Models Ensemble: Oil + Poster + Felt, Mix Plan="down": [0, 1, 0, 2], "mid": 2, "up":  [1, 2, 0, 1],</figcaption>
         </figure>
 
         <figure>
@@ -636,7 +638,7 @@
             target="_blank" rel="noopener noreferrer">
             <img src="https://raw.githubusercontent.com/kuanyewleong/Procedural-Aesthetics/refs/heads/main/figures/lotus/oil-20_poster-20_lowpoly-60_lotus.png" alt="Oil 20 / Poster 20 / Lowpoly 60">
             </a>
-            <figcaption>Models Ensemble - Oil 0.20/Poster 0.20/Lowpoly 0.60</figcaption>
+            <figcaption>Models Ensemble: Soft-blend Oil 0.20/Poster 0.20/Lowpoly 0.60</figcaption>
         </figure>
 
         <figure>
@@ -644,7 +646,7 @@
             target="_blank" rel="noopener noreferrer">
             <img src="https://raw.githubusercontent.com/kuanyewleong/Procedural-Aesthetics/refs/heads/main/figures/lotus/oil-30_poster-25_felt-45_lotus.png" alt="Oil 30 / Poster 25 / Felt 45">
             </a>
-            <figcaption>Models Ensemble - Oil 0.30/Poster 0.25/Felt 0.45</figcaption>
+            <figcaption>Models Ensemble: Soft-blend Oil 0.30/Poster 0.25/Felt 0.45</figcaption>
         </figure>
         </div>
 
@@ -654,7 +656,7 @@
             target="_blank" rel="noopener noreferrer">
             <img src="https://raw.githubusercontent.com/kuanyewleong/Procedural-Aesthetics/refs/heads/main/figures/lotus/watercolor-30_pointillism-40_mosaic-30_lotus.png" alt="Watercolor 30 / Pointillism 40 / Mosaic 30">
             </a>
-            <figcaption>Models Ensemble - Watercolor 0.30/Pointillism 0.40/Mosaic 0.30</figcaption>
+            <figcaption>Models Ensemble: Soft-blend Watercolor 0.30/Pointillism 0.40/Mosaic 0.30</figcaption>
         </figure>
 
         <figure>
@@ -662,7 +664,7 @@
             target="_blank" rel="noopener noreferrer">
             <img src="https://raw.githubusercontent.com/kuanyewleong/Procedural-Aesthetics/refs/heads/main/figures/lotus/watercolor-40_lowpoly-10_pointillism-50_lotus.png" alt="Watercolor 40 / Lowpoly 10 / Pointillism 50">
             </a>
-            <figcaption>Models Ensemble - Watercolor 0.40/Lowpoly 0.10/Pointillism 0.50</figcaption>
+            <figcaption>Models Ensemble: Soft-blend Watercolor 0.40/Lowpoly 0.10/Pointillism 0.50</figcaption>
         </figure>
         </div><br>
         
