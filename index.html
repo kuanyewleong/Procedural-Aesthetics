@@ -771,9 +771,15 @@
             <p>By restricting soft blending to cross-attention blocks, we are mixing models primarily in the components that perform text-guided feature modulation (semantic/style binding), while leaving the rest of the convolutional/residual machinery largely intact (often from a single base model).</p><br>
             
             <p><strong>Mix-Plan (hard-voting)</strong></p>
-            <p>All the UNet share the same architecture with 4 down blocks, 1 mid block, and 4 up blocks: Ũ = {Down1, Down2, Down3, Down4, Mid, Up1, Up2, Up3, Up4}. The mix plan is a block-wise parameter grafting rule that builds a single composite UNet, Ũ by selecting (hard mixing) which trained model supplies the parameters of each block. For example, in the case of [Oil + Poster + Felt, Mix Plan={"down": [0, 1, 0, 2], "mid": 2, "up":  [1, 2, 0, 1]}]: </p>
+            <p>All the UNet share the same architecture with 4 down blocks, 1 mid block, and 4 up blocks: Ũ = {Down1, Down2, Down3, Down4, Mid, Up1, Up2, Up3, Up4}. The mix plan is a block-wise parameter grafting rule that builds a single composite UNet, Ũ by selecting (hard mixing) which trained model supplies the parameters of each block. For example, in the case of [Post-Impressionism + Poster + Felt, Mix Plan={"down": [0, 1, 0, 2], "mid": 2, "up":  [1, 2, 0, 1]}]: </p>
+            <p>Firstly, it means three independently trained UNets:</p>
             <ul>
-                <li>Down path (encoder): "down": [0, 1, 0, 2]:
+                <li>Model index-0: Post-Impressionism style</li>
+                <li>Model index-1: Poster style</li>
+                <li>Model index-2: Felt style</li>
+            </ul>
+            <ul>
+                <li>Down path (encoder): "down": [0, 1, 0, 2]: -> the index numbers indicate which model to use
                     <ul>
                         <li>Earlier down blocks (Down1, Down2) operate at higher spatial resolutions, shaping edges, local brush marks, and early compositional cues.</li>
                         <li>Later down blocks (Down3, Down4) operate at lower resolutions (more abstract), encoding global structure and coarse style statistics.</li>
