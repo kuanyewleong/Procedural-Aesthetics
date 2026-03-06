@@ -36,7 +36,7 @@
     - Primary constraint: no artwork images used at any stage (no art datasets, no art-trained models, text-conditioning T5 is pure language model)
 
 
-# (codes are not revealed yet as there is a publication review process underway)
+# (codes are not revealed yet as there is a review process underway)
 # Installation
 pip install -r requirements.txt
 
