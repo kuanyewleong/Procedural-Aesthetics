@@ -529,8 +529,8 @@
             </ul>
             <p>This gallery presents flower images that look painted, printed, stitched, or some form of artistic stylized - yet the system that generated them was <strong>never trained on paintings, illustrations, or any art dataset. No pre-trained checkpoints of any art style / dataset as well. </strong></p>
             <p>Research Questions:</p>
-            <p>(1) How much can a text‑to‑image model learn by procedural filters to generate a recognizable visual art style without ever being trained on artwork samples?</p>
-            <p>(2) Can the ensemble of several models trained with procedural filters of different art style create some emerging, yet visually coherent art styles? &#x2935; (click for more...)</p>
+            <p>(1) How much can a generative model internalize a recognizable visual style from procedural supervision alone, without ever seeing human-made artworks?</p>
+            <p>(2) Can the ensemble of several models trained with procedural anchoring of different art style create some emerging, yet visually coherent art styles? &#x2935; (click for more...)</p>
         </summary>
         <p>To explore this, I trained a diffusion-based text-to-image model entirely from scratch using only real flower photographs (Oxford Flower-102). <strong>No pre-trained checkpoints. No inherited aesthetic priors.</strong> Any “artistic” qualities here are not copied from art history; they are grown through constraint.</p>
 
@@ -1514,8 +1514,10 @@
     <section id="philosophy">
         <details>
             <summary>
-                <h2>Concluding Remarks</h2>
-                <p>As the “style prior” in this project is procedural, it’s inherently extensible: richer filters mean richer constraints. As we move from simple abstractions (posterization, oil, pointillism, mosaic etc.) toward more complex, physically inspired procedures — pigment diffusion, layered glazing, paper granulation, anisotropic brush dynamics, printmaking noise, or even learned procedural operators — the model won’t just imitate a look; it will internalize a deeper mechanism for producing it. Combined with ensemble mixing, these procedures can interact and interfere in increasingly high-dimensional ways, opening a path toward more intricate, hybrid, and previously unseen styles — styles that emerge from controllable visual “physics,” rather than borrowed exemplars.</p>
+                <h2>Contribution & Concluding Remarks</h2>
+                <p>The procedural filters in this framework are not the end product; they are controlled supervisory signals. The scientific contribution lies in showing that a generative model can absorb these signals into a text-conditioned image prior that produces novel, style-consistent images from noise, including compositions that no direct filter pipeline could generate.</p>
+
+                <p>As the “style prior” in this project is procedural, it’s inherently extensible: richer controlled style priors mean richer constraints. As we move from simple abstractions (posterization, oil, pointillism, mosaic etc.) toward more complex, physically inspired procedures — pigment diffusion, layered glazing, paper granulation, anisotropic brush dynamics, printmaking noise, or even learned procedural operators — the model won’t just imitate a look; it will internalize a deeper mechanism for producing it. Combined with ensemble mixing, these procedures can interact and interfere in increasingly high-dimensional ways, opening a path toward more intricate, hybrid, and previously unseen styles — styles that emerge from controllable visual “physics,” rather than borrowed exemplars.</p>
             </summary>           
         </details>
     </section>
