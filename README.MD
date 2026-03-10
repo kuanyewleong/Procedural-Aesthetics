@@ -62,17 +62,4 @@ python infer_stage2_{style_name}.py
 ```
 
 # Example Outcomes 
-
-## Direct Inference by Models trained with Procedural Anchoring
-| Felt Style | Lowpoly Style | Oil Painting Style |
-|:--:|:--:|:--:|
-![Camellia - felt style](https://github.com/kuanyewleong/Procedural-Aesthetics/blob/main/figures/stage2_felt_camellia.png)|![Clematis - lowpoly style](https://github.com/kuanyewleong/Procedural-Aesthetics/blob/main/figures/stage2_lowpoly_clematis.png)|![King Protea - oil painting](https://github.com/kuanyewleong/Procedural-Aesthetics/raw/main/figures/image_oil_painting.jpg)|
-|*Camellia*|*Clematis*|*King Protea*|
-
-| Mosaic | Post-impressionism | Poster |
-|:--:|:--:|:--:|
-|![Buttercup - mosaic](https://github.com/kuanyewleong/Procedural-Aesthetics/blob/main/figures/stage2_mosaic_buttercup.png)|![Rose - post-impressionism](https://github.com/kuanyewleong/Procedural-Aesthetics/blob/main/figures/stage2_post-imp_rose.png)|![Morning Glory - poster](https://github.com/kuanyewleong/Procedural-Aesthetics/blob/main/figures/stage2_poster_morning_glory.png)|
-|*Buttercup*|*Rose*|*Morning Glory*|
-
-# The best part (and the highlight) of this approach is the ensembling creativity - 
-## Emerging Styles by Ensembling different Models (weighted soft blend per block-wise mixing)
+ Please follow this website for more examples: [link](https://kuanyewleong.github.io/Procedural-Aesthetics/)
