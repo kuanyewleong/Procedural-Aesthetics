@@ -530,7 +530,7 @@
             <p>This gallery presents flower images that look painted, printed, stitched, or some form of artistic stylized - yet the system that generated them was <strong>never trained on paintings, illustrations, or any art dataset. No pre-trained checkpoints of any art style / dataset as well. </strong></p>
             <p>Research Questions:</p>
             <p>(1) How much can a generative model internalize a recognizable visual style from procedural supervision alone, without ever seeing human-made artworks?</p>
-            <p>(2) Can the ensemble of several models trained with procedural anchoring of different art style create some emerging, yet visually coherent art styles? &#x2935; (click for more...)</p>
+            <p>(2) Can the ensemble of several models trained with procedural anchoring of different art style create some emerging, yet visually coherent art styles? <strong>&#x2935; (click for more...)</strong></p>
         </summary>
         <p>To explore this, I trained a diffusion-based text-to-image model entirely from scratch using only real flower photographs (Oxford Flower-102). <strong>No pre-trained checkpoints. No inherited aesthetic priors.</strong> Any “artistic” qualities here are not copied from art history; they are grown through constraint.</p>
 
@@ -604,7 +604,7 @@
     <details>
         <summary>
             <h2>Method (Behind the Images)</h2>
-            <p>How do we train a model to learn an art style without art data? How do we ensemble multiple models to create new styles?</p>
+            <p>How do we train a model to learn an art style without art data? How do we ensemble multiple models to create new styles? <strong>&#x2935; (click for more...)</strong></p>
         </summary>        
         <figure style="width: 90%; margin: 0 auto;">   <!-- centers if desired -->
             <img src="https://raw.githubusercontent.com/kuanyewleong/Procedural-Aesthetics/refs/heads/main/website_media/info-graphic-edit.png" alt="Methodology" style="width: 100%; height: auto; display: block;">
@@ -759,7 +759,7 @@
         <details>
             <summary>
                 <h2>Want to know more about the ensembling techniques?</h2>
-                <p>Two techniques of crossing the block-wise layers were employed: soft-blend and hard-voting using a mix-plan. &#x2935; (click for more...)</p>
+                <p>Two techniques of crossing the block-wise layers were employed: soft-blend and hard-voting using a mix-plan. <strong>&#x2935; (click for more...)</strong></p>
             </summary>
             <p><strong>Soft-blend</strong></p>
             <p>Only blocks with cross-attention (e.g., CrossAttnDownBlock2D, mid_block if cross-attn, and CrossAttnUpBlock2D) were soft-blended. For example, in the case of [Soft-blend Oil 0.30/Poster 0.25/Felt 0.45]: </p>
