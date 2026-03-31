@@ -2,7 +2,7 @@
 ## (A Procedural Style Anchoring Approach to Visual Art Generation)
 
 1. ### The Problem: The "Imitation Trap" in Current AI Art
-    Current text-to-image models like Stable Diffusion are incredible, but they have a fundamental flaw: they can only imitate styles they've already seen in their massive, often copyrighted, training data. This creates:
+    Current text-to-image models like Stable Diffusion are incredible, but they carry an inherent limitation: their stylistic range is strongly shaped by what they’ve encountered in large-scale training data, which can include copyrighted material. This creates:
 
     - Legal & Ethical Risks: Dependence on copyrighted artwork.
 
