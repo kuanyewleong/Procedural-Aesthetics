@@ -61,5 +61,10 @@ python train_diffuser_stage2_{style_name}.py
 python infer_stage2_{style_name}.py
 ```
 
+## Ensemble Models with soft-blend / mix plan
+```
+python infer_ensemble.py
+```
+
 # Example Outcomes 
  Please follow this website for more examples: [link](https://kuanyewleong.github.io/Procedural-Aesthetics/)
