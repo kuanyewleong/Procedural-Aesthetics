@@ -15,7 +15,6 @@ from auto_captions.auto_captions_oil import make_oil_caption
 from procedural_modules.kuwahara_modules import AnisoKuwaharaOilPipeline
 
 
-# ---------- reuse your Stage-1 modules ----------
 class EMA:
     def __init__(self, model, decay=0.9999):
         self.decay = decay

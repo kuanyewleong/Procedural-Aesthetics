@@ -15,7 +15,6 @@ from auto_captions.auto_captions_mosaic import make_mosaic_caption
 from procedural_modules.mosaic_modules import MosaicPipeline
 
 
-# ---------- reuse your Stage-1 modules ----------
 class EMA:
     def __init__(self, model, decay=0.9999):
         self.decay = decay

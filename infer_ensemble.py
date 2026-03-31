@@ -142,7 +142,7 @@ def prompt_to_label_id(prompt: str, name_to_label: dict):
 
 
 # -------------------------
-# NEW: Load multiple UNets and block-wise mix them
+# Load multiple UNets and block-wise mix them
 # -------------------------
 
 def _load_stage2_bundle(ckpt_path: str, device: str, image_size: int):
@@ -454,28 +454,22 @@ def main(
     print("z stats:", float(z.mean()), float(z.std(unbiased=False)), float(z.min()), float(z.max()))
     print("x stats:", float(x.mean()), float(x.std(unbiased=False)), float(x.min()), float(x.max()))
 
-    # Optional: show what the procedural posterizer would do (side-by-side debug)
-    # art_style = InkSketchPipeline()
-    # x01 = ((x + 1) / 2).clamp(0, 1).squeeze(0)
-    # x_post = art_style(x01).unsqueeze(0)
-    # out_png2 = out_png.replace(".png", "_postproc.png")
-    # save_image(x_post, out_png2)
-    # print("Saved (postproc preview):", out_png2)
 
 if __name__ == "__main__":
     # Example 1: soft-blend
-    # main(
-    #     prompt="a hibiscus in the wild painted with a new creative hybrid art style",
-    #     ckpt_stage2_list=(
-    #         "ckpts/unet_stage2_halftone_step10000.pt",
-    #         "ckpts/unet_stage2_poster.pt",
-    #         "ckpts/unet_stage2_felt.pt",
-    #     ),
-    #     out_png="samples/ensemble_soft.png",
-    #     ensemble_mode="soft",
-    #     soft_weights=[0.25, 0.30, 0.45], # soft_weights=[0.20, 0.20, 0.60],
-    #     soft_where="attn_only",
-    # )
+    main(
+        prompt="a hibiscus in the wild painted with a new creative hybrid art style",
+        ckpt_stage2_list=(
+            "ckpts/unet_stage2_halftone_step10000.pt",
+            "ckpts/unet_stage2_poster.pt",
+            "ckpts/unet_stage2_felt.pt",
+        ),
+        out_png="samples/ensemble_soft.png",
+        ensemble_mode="soft",
+        soft_weights=[0.25, 0.30, 0.45], # soft_weights=[0.20, 0.20, 0.60],
+        soft_where="attn_only",
+    )
+
     # flower_name = "lotus"
     # Example 2: explicit block plan (more controllable “style grafting”)
     # main(
@@ -494,98 +488,3 @@ if __name__ == "__main__":
     #         sample_steps=600
     #     )
 
-
-    # loop through all names in json and generate samples 
-    # using mix-plan
-    # import json
-    # with open('data/flowers-102/cat_to_name.json', 'r') as f:
-    #     cat_to_name = json.load(f)
-    
-    # total_flowers = len(cat_to_name)
-    # for idx, (flower_id, flower_name) in enumerate(cat_to_name.items(), 1):
-    #     print(f"Processing {idx}/{total_flowers}: {flower_name}")
-        
-    #     main(
-    #         prompt=f"a {flower_name} in the wild, painted with a new creative hybrid art style",
-    #         ckpt_stage2_list=(
-    #             "ckpts/oil/unet_stage2_oil_step50000.pt",
-    #             "ckpts/unet_stage2_poster.pt",
-    #             "ckpts/unet_stage2_felt.pt",
-    #         ),
-    #         out_png=f"samples/emerging_style/mix_plan_step250/{flower_name}.png",
-    #         mix_plan={
-    #             "down": [0, 1, 0, 2],
-    #             "mid": 2,
-    #             "up": [1, 2, 0, 1],
-    #         },
-    #     )
-
-    # using soft-blend
-    import json
-    with open('data/flowers-102/cat_to_name.json', 'r') as f:
-        cat_to_name = json.load(f)
-    
-    total_flowers = len(cat_to_name)
-    for idx, (flower_id, flower_name) in enumerate(cat_to_name.items(), 1):
-        print(f"Processing {idx}/{total_flowers}: {flower_name}")
-
-        # main(
-        #     prompt=f"a {flower_name} in the wild, painted with a new creative hybrid art style",
-        #     ckpt_stage2_list=(                
-        #         "ckpts/fauvism/unet_stage2_fauvism.pt",
-        #         "ckpts/lining/unet_stage2_lining_step75000.pt",
-        #         "ckpts/pointillism/unet_stage2_pointillism_step60000.pt",
-        #     ),
-        #     out_png=f"samples/emerging_style/fauvism-10_lining-40_pointillism-50/{flower_name}.png",            
-        #     ensemble_mode="soft",
-        #     soft_weights=[0.10, 0.40, 0.50],
-        #     soft_where="attn_only",
-        #     dyn_thresh=False,
-        #     sample_steps=250
-        # )
-        
-        
-        # main(
-        #     prompt=f"a {flower_name} in the wild, painted with a new creative hybrid art style",
-        #     ckpt_stage2_list=(
-        #         "ckpts/lining/unet_stage2_lining_step75000.pt",                              
-        #         "ckpts/chaoticbrush/unet_stage2_cbrush_step20000.pt",
-        #         "ckpts/unet_stage2_felt.pt",
-        #     ),
-        #     out_png=f"samples/emerging_style/mix_plan_felt_lining_chaoticbrush/{flower_name}.png",
-        #     mix_plan={
-        #         "down": [0, 0, 0, 0],
-        #         "mid": 2,
-        #         "up": [1, 1, 1, 1],
-        #     },
-        #     sample_steps=250
-        # )
-
-        main(
-            prompt=f"a {flower_name} in the wild, painted with a new creative hybrid art style",
-            ckpt_stage2_list=(
-                "ckpts/chaoticbrush/unet_stage2_cbrush_step25000.pt",
-                "ckpts/oil_preproc/unet_stage2_oil_step47000.pt",                
-                "ckpts/fauvism/unet_stage2_fauvism_step20000.pt",
-                "ckpts/lining/unet_stage2_lining_step70000.pt"
-            ),
-            out_png=f"samples/emerging_style/mix_plan_cbrush_oil_fauvism_lining/{flower_name}.png",
-            mix_plan={
-                "down": [0, 0, 3, 1],
-                "mid": 2,
-                "up": [3, 3, 0, 0],
-            },
-        )
-
-        # main(
-        #     prompt=f"a {flower_name} in the wild, painted with a new creative hybrid art style",
-        #     ckpt_stage2_list=(                
-        #         "ckpts/unet_stage2_watercolor_step30000.pt",
-        #         "ckpts/lowpoly/unet_stage2_lowpoly_step55000.pt",
-        #         "ckpts/pointillism/unet_stage2_pointillism_step26000.pt"
-        #     ),
-        #     out_png=f"samples/emerging_style/watercolor-40_lowpoly-10_pointillism-50/{flower_name}.png",            
-        #     ensemble_mode="soft",
-        #     soft_weights=[0.40, 0.10, 0.50], # soft_weights=[0.20, 0.20, 0.60],
-        #     soft_where="all",
-        # )

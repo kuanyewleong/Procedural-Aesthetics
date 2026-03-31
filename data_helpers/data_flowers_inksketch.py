@@ -20,7 +20,6 @@ class Flowers102InkSketch(Dataset):
         b = self.base[idx]
         img01 = b["image"]  # torch [3,H,W] in [0,1]
 
-        # apply procedural ink sketch (torch, GPU-friendly if moved later)
         img01 = self.sketch_fn(img01).clamp(0, 1)
 
         b = dict(b)

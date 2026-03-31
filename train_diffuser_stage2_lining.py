@@ -15,7 +15,6 @@ from auto_captions.auto_captions_lining import make_lining_caption
 from procedural_modules.lining_modules import LiningPipeline
 
 
-# ---------- reuse your Stage-1 modules ----------
 class EMA:
     def __init__(self, model, decay=0.9999):
         self.decay = decay

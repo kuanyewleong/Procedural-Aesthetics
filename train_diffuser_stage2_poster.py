@@ -15,7 +15,6 @@ from data_helpers.data_flowers_poster import Flowers102Poster
 from procedural_modules.poster_modules import PosterPipeline
 
 
-# ---------- reuse your Stage-1 modules ----------
 class EMA:
     def __init__(self, model, decay=0.9999):
         self.decay = decay

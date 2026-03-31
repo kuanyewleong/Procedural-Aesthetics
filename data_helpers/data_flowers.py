@@ -163,8 +163,6 @@ class Flowers102Clean(Dataset):
         self.root = Path(root)
         self.flowers_root = _find_flowers102_root(self.root)
 
-        # If you still want auto-download, keep using torchvision elsewhere.
-        # This clean loader assumes the dataset is present.
         if download:
             # We deliberately avoid downloading here to keep behavior explicit/clean-room.
             # If you want download, do it once with torchvision.datasets.Flowers102(..., download=True).
@@ -188,8 +186,7 @@ class Flowers102Clean(Dataset):
         real_idx = self.indices[idx]
         path = self.all_paths[real_idx]
         label = int(self.all_labels[real_idx])  # 0..101
-
-        # robust name
+        
         if 0 <= label < len(self.names):
             name = self.names[label].replace("_", " ")
         else:

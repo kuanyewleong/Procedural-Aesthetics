@@ -10,8 +10,6 @@ from auto_captions.auto_captions_class_emb import make_natural_caption
 from models_ae import KL_VAE
 from text_cond_t5_dual import T5DualTextCond
 from diffusion_sd15 import CosineScheduler, q_sample
-
-# from models_diffuser import build_sd15_unet
 from diffusers import UNet2DConditionModel
 
 
@@ -41,9 +39,9 @@ class VecToTokensTransformer(nn.Module):
     """
     def __init__(
         self,
-        d_in: int,            # your ctx dim (text.d_ctx)
+        d_in: int,            
         n_tokens: int = 77,
-        d_model: int = 512,   # internal transformer width
+        d_model: int = 512,   
         d_out: int = 768,     # SD cross_attention_dim
         n_layers: int = 3,
         n_heads: int = 8,
@@ -320,7 +318,7 @@ def train_stage1_t5_sd15_unet(
         opt.zero_grad(set_to_none=True)
         loss.backward()
 
-        # IMPORTANT: include class_embed params too
+        # include class_embed params too
         torch.nn.utils.clip_grad_norm_(
             list(unet.parameters()) + list(ctx_adapter.parameters()) + list(class_embed.parameters()),
             1.0

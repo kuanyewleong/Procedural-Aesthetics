@@ -15,7 +15,6 @@ from auto_captions.auto_captions_chaoticbrush import make_chaotic_brushes_captio
 from procedural_modules.chaoticbrush_modules import ChaoticBrushesPipeline
 
 
-# ---------- reuse your Stage-1 modules ----------
 class EMA:
     def __init__(self, model, decay=0.9999):
         self.decay = decay
@@ -299,7 +298,7 @@ def train_stage2_poster(
                 "ctx_adapter": ctx_adapter.state_dict(),
                 "class_embed": class_embed.state_dict(),
                 "latent_size": latent_size,
-                "global_step": global_step,   # optional but useful metadata
+                "global_step": global_step,
             }
 
             torch.save(ckpt, step_out)

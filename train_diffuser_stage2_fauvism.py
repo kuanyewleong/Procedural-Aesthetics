@@ -15,7 +15,6 @@ from auto_captions.auto_captions_fauvism import make_fauvism_caption
 from procedural_modules.fauvism_modules import FauvismPipeline
 
 
-# ---------- reuse your Stage-1 modules ----------
 class EMA:
     def __init__(self, model, decay=0.9999):
         self.decay = decay

@@ -16,7 +16,6 @@ from data_helpers.data_flowers_inksketch import Flowers102InkSketch
 from procedural_modules.hatching_modules import InkSketchPipeline
 
 
-# ---------- reuse your Stage-1 modules ----------
 class EMA:
     def __init__(self, model, decay=0.9999):
         self.decay = decay

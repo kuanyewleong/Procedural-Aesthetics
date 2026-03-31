@@ -15,7 +15,6 @@ from data_helpers.data_flowers_postimp import Flowers102PostImpressionist
 from procedural_modules.post_impressionist_modules import PostImpressionistPipeline
 
 
-# ---------- reuse your Stage-1 modules ----------
 class EMA:
     def __init__(self, model, decay=0.9999):
         self.decay = decay

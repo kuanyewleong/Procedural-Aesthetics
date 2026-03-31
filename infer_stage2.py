@@ -253,69 +253,13 @@ def main(
     print("z stats:", float(z.mean()), float(z.std(unbiased=False)), float(z.min()), float(z.max()))
     print("x stats:", float(x.mean()), float(x.std(unbiased=False)), float(x.min()), float(x.max()))
 
-    # Optional: show what the procedural posterizer would do (side-by-side debug)
-    # art_style = AnisoKuwaharaOilPipeline()
-    # # You can apply to generated image in [0,1] for comparison
-    # x01 = ((x + 1) / 2).clamp(0, 1).squeeze(0)
-    # x_post = art_style(x01).unsqueeze(0)
-    # out_png2 = out_png.replace(".png", "_postproc.png")
-    # save_image(x_post, out_png2)
-    # print("Saved (postproc preview):", out_png2)
-
 
 if __name__ == "__main__":
-    # main(
-    #     prompt="a oxeye daisy in the wild, in post impressionism style",
-    #     ckpt_stage2="ckpts/unet_stage2_post-imp.pt",
-    #     vae_ckpt="ckpts/vae_512_lpips.pt",
-    #     out_png="samples/style_post-imp/stage2_post-imp_sample.png",
-    #     guidance_scale=2.5,
-    #     sample_steps=250,
-    #     dyn_p=0.999,
-    #     dyn_thresh=False,
-    # )
-
-    # oil painting settings
-    # main(
-    #     prompt="a rose in the wild, in oil on canvas style",
-    #     ckpt_stage2="ckpts/oil_preproc/unet_stage2_oil_step47000.pt",
-    #     vae_ckpt="ckpts/vae_512_lpips.pt",
-    #     out_png="samples/style_oil/stage2_oil_sample.png",
-    #     guidance_scale=2.5,
-    #     sample_steps=250,
-    #     dyn_p=0.999,
-    #     dyn_thresh=True,
-    # )
-
-    # pointillism settings (uncomment and modify as needed)
-    # flower_name = "lotus"
-    # art_style = "pointillism"
-    # model_path = "ckpts/pointillism/unet_stage2_pointillism_step60000.pt" # good weights
-
-    # main(
-    #     prompt=f"a {flower_name} in the wild, in {art_style} style",
-    #     ckpt_stage2=model_path,
-    #     vae_ckpt="ckpts/vae_512_lpips.pt",
-    #     out_png=f"samples/style_{art_style}/stage2_{art_style}_{flower_name.replace(' ', '-')}2.png",
-    #     guidance_scale=2.5,
-    #     sample_steps=250,
-    #     dyn_p=0.999,
-    #     dyn_thresh=True,
-    # )
-
-    # generic settings (uncomment and modify as needed)
-    flower_name = "bromelia"
-    art_style = "lining"
-    model_path = "ckpts/lining/unet_stage2_lining_step75000.pt"
-    # model_path = "ckpts/mosaic/unet_stage2_mosaic_step20000.pt" 
-    # model_path = "ckpts/lowpoly/unet_stage2_lowpoly_step55000.pt"
-    # model_path = "ckpts/mosaic/unet_stage2_mosaic_step20000.pt"
-
     main(
-        prompt= f"a {flower_name} in the wild, in {art_style} style",
-        ckpt_stage2=model_path,
+        prompt="a oxeye daisy in the wild, in post impressionism style",
+        ckpt_stage2="ckpts/unet_stage2_post-imp.pt",
         vae_ckpt="ckpts/vae_512_lpips.pt",
-        out_png=f"samples/style_{art_style}/stage2_{art_style}_{flower_name.replace(' ', '-')}.png",
+        out_png="stage2_post-imp_sample.png",
         guidance_scale=2.5,
         sample_steps=250,
         dyn_p=0.999,

@@ -15,7 +15,6 @@ from auto_captions.auto_captions_halftone import make_halftone_caption
 from procedural_modules.halftone_modules import HalftonePipelinePopArt
 
 
-# ---------- reuse your Stage-1 modules ----------
 class EMA:
     def __init__(self, model, decay=0.9999):
         self.decay = decay

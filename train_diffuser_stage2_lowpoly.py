@@ -15,7 +15,6 @@ from auto_captions.auto_captions_lowpoly import make_lowpoly_caption
 from procedural_modules.lowpoly_modules import LowPolyPipeline
 
 
-# ---------- reuse your Stage-1 modules ----------
 class EMA:
     def __init__(self, model, decay=0.9999):
         self.decay = decay
